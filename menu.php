@@ -29,46 +29,34 @@
 <hr class="sidebar-divider my-2 alert-light">
 
 <li class="nav-item">
-    <a class="nav-link" href="seguimiento_actividades">
-        <i class="fas fa-fw fa-list text-gray-400"></i>
-        <span>Seguimiento actividades</span>
+    <a class="nav-link" href="bienvenida.php">
+        <i class="fas fa-fw fa-home text-gray-400"></i>
+        <span>Inicio</span>
     </a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="pendientes">
-        <i class="fas fa-fw fa-hourglass-half text-warning"></i>
-        <span>Actividades por Vencer</span>
+    <a class="nav-link" href="documentos.php">
+        <i class="fas fa-fw fa-file-alt text-gray-400"></i>
+        <span>Documentos</span>
     </a>
 </li>
-<hr class="sidebar-divider my-0 alert-light">
-<li class="nav-item">
-    <a class="nav-link" href="sol_logistica">
-        <i class="fas fa-fw fa-car text-gray-400"></i>
-        <span>Solicitudes Logistica</span>
-    </a>
-</li>
-<hr class="sidebar-divider my-0 alert-light">
-<li class="nav-item">
-    <a class="nav-link" href="verActividadesPlaneadas">
-        <i class="fas fa-fw fa-calendar text-gray-400"></i>
-        <span>Actividades planeadas</span>
+
+<li  class="nav-item">
+    <a class="nav-link" href="documentos.php">
+        <i class="fas fa-fw fa-file-alt text-gray-400"></i>
+        <span>Crear IM o CC</span>
     </a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="verActividades">
-        <i class="fas fa-fw fa-calendar text-gray-400"></i>
-        <span>Actividades planeadas SCOT</span>
+    <a class="nav-link" href="auditoria.php">
+        <i class="fas fa-fw fa-clipboard-list text-gray-400"></i>
+        <span>Auditoría</span>
     </a>
 </li>
+
 <hr class="sidebar-divider my-0 alert-light">
-<li class="nav-item">
-    <a class="nav-link" href="grafica_planeacion">
-        <i class="fas fa-fw fa-chart-bar text-gray-400"></i>
-        <span>Resumen por Área</span>
-    </a>
-</li>
 
 <hr class="sidebar-divider my-0 alert-light">
 <li class="nav-item">
