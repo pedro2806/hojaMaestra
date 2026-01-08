@@ -1,11 +1,10 @@
 <?php
 session_start();
 // Seguridad: Si no hay sesión activa, redirigir al login
-/*if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
 }
-*/
 // Personalizamos el saludo según la hora del día
 $hora = date('H');
 if ($hora >= 5 && $hora < 12) { $saludo = "Buenos días"; }
