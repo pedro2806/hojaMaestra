@@ -4,6 +4,8 @@ session_start();
 // Tu conexión existente
 include 'conn.php';
 
+$error_message = ''; // Variable para almacenar mensajes de error
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibimos el identificador (puede ser username o email)
     $identificador = $_POST['usuario'];
@@ -15,28 +17,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             JOIN roles r ON u.id_rol = r.id_rol 
             WHERE (u.username = ? OR u.email = ?) AND u.estado = 'activo' 
             LIMIT 1";
-/*
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $identificador, $identificador);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    */
     
     if ($stmt = $conn->prepare($sql)) {
-          // Enlazar los parámetros dinámicamente        
+        // Enlazar los parámetros dinámicamente
         $stmt->bind_param("ss", $identificador, $identificador);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result && $result->num_rows > 0) {
-            echo 'Usuario encontrado'; // Usuario encontrado
+            $user = $result->fetch_assoc();
+
+            // Verificar la contraseña
+            if (password_verify($password_input, $user['password_hash'])) {
+                // Contraseña correcta, iniciar sesión
+                $_SESSION['user_id'] = $user['id_usuario'];
+                $_SESSION['nombre_completo'] = $user['nombres'];
+                $_SESSION['rol_nombre'] = $user['nombre_rol'];
+
+                // Redirigir a la página de bienvenida
+                header("Location: bienvenida.php");
+                exit();
+            } else {
+                // Contraseña incorrecta
+                $error_message = "Usuario o contraseña incorrectos.";
+            }
         } else {
-            echo 'Usuario NO encontrado'; // Usuario encontrado
+            // Usuario no encontrado
+            $error_message = "Usuario o contraseña incorrectos.";
         }
         $stmt->close();
     } else {
-        echo 'Error'; // Usuario encontrado
+        // Error en la preparación de la consulta
+        $error_message = "Error del sistema. Por favor, inténtelo de nuevo más tarde.";
     }
     $conn->close();
+
+    // Si hubo un error, redirigir de vuelta al login con un mensaje
+    if (!empty($error_message)) {
+        // Redirigir de vuelta a index.php con el mensaje de error
+        header("Location: index.php?error=" . urlencode($error_message));
+        exit();
+    }
+} else {
+    // Si no es un método POST, redirigir al login
+    header("Location: index.php");
+    exit();
 }
 ?>
