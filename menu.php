@@ -36,16 +36,41 @@
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="documentos.php">
-        <i class="fas fa-fw fa-file-alt text-gray-400"></i>
-        <span>Documentos</span>
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDocumentos"
+        aria-expanded="true" aria-controls="collapseDocumentos">
+        <i class="fas fa-fw fa-folder text-gray-400"></i>
+        <span>Gestión de Docs</span>
     </a>
+    <div id="collapseDocumentos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Opciones de Control:</h6>
+            
+            <a class="collapse-item" href="hojasmaestras.php">
+                <i class="fas fa-file-alt mr-2 text-gray-400"></i> Ver Documentos
+            </a>
+            
+            <a class="collapse-item" href="carga_documentos.php">
+                <i class="fas fa-file-upload mr-2 text-gray-400"></i> Cargar Nuevo
+            </a>
+            
+            <a class="collapse-item" href="historial_descargas.php">
+                <i class="fas fa-history mr-2 text-gray-400"></i> Historial/Logs
+            </a>
+        </div>
+    </div>
 </li>
 
 <li  class="nav-item">
     <a class="nav-link" href="documentos.php">
         <i class="fas fa-fw fa-file-alt text-gray-400"></i>
         <span>Crear IM o CC</span>
+    </a>
+</li>
+
+<li  class="nav-item">
+    <a class="nav-link" href="calculos.php">
+        <i class="fas fa-fw fa-calculator text-gray-400"></i>
+        <span>Cálculos</span>
     </a>
 </li>
 

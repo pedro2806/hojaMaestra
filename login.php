@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 // Tu conexión existente
@@ -7,6 +8,7 @@ include 'conn.php';
 $error_message = ''; // Variable para almacenar mensajes de error
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
     // Recibimos el identificador (puede ser username o email)
     $identificador = $_POST['usuario'];
     $password_input = $_POST['password'];
@@ -28,11 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = $result->fetch_assoc();
 
             // Verificar la contraseña
-            if (password_verify($password_input, $user['password_hash'])) {
+            ///if (password_verify($password_input, $user['password_hash'])) {
+            if ($password_input === $user['password_hash']) {
                 // Contraseña correcta, iniciar sesión
                 $_SESSION['user_id'] = $user['id_usuario'];
                 $_SESSION['nombre_completo'] = $user['nombres'];
-                $_SESSION['rol_nombre'] = $user['nombre_rol'];
+                $_SESSION['rol_nombre'] = $user['id_rol'];
 
                 // Redirigir a la página de bienvenida
                 header("Location: bienvenida.php");
@@ -60,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     // Si no es un método POST, redirigir al login
-    header("Location: index.php");
+   //// header("Location: index.php");
     exit();
 }
 ?>
